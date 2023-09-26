@@ -1,0 +1,18 @@
+<div id="<%= dom_id post %>">
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+  <% if post.images.attached? %>
+    <% post.images.each do |image| %>
+      <%= image_tag(image, height: 100) %>
+      <%= link_to "Remove", remove_image_post_path(image), data: { turbo_method: :delete } %>
+      <br />
+    <% end %>
+  <% end %>
+  <p>
+    <strong>Content:</strong>
+    <%= post.content %>
+  </p>
+</div>
+
